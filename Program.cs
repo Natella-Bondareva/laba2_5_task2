@@ -18,6 +18,7 @@ namespace laba2_5_task2
                     st.Add(student);
                 }
             }
+            return st;
         }
 
         static void runMenu(List<Student> studs)
@@ -25,8 +26,11 @@ namespace laba2_5_task2
             List<Student> result = new List<Student>();
             foreach (Student student in studs)
             {
-                if ()
-                result.Add(student);
+                if (student.physicsMark == '-' && student.mathematicsMark == '-' && student.informaticsMark == '-')
+                {
+                    Console.WriteLine(student.surName);
+                    result.Add(student);
+                }
             }
         }
         static void Main(string[] args)
@@ -34,6 +38,7 @@ namespace laba2_5_task2
             Console.OutputEncoding = Encoding.UTF8;
             List<Student> studs = ReadData("input.txt");
             runMenu(studs);
+            Console.ReadKey();
         }
     }
 }
