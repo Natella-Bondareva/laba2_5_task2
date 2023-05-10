@@ -1,26 +1,38 @@
 ﻿using System;
+using System.Text;
 
 namespace laba2_5_task2
 {
     internal class Program
     {
-        static Student[] ReadData(string fileName)
-        // You may (if want) change ``Student[]'' to ``List<Student>''
+        static List<Student> ReadData(string fileName)
         {
-            // TODO   implement this method.
-            // It should read the file whose fileName has been passed and fill data inside array of Student
+            FileStream fs = File.Open(@"input.txt", FileMode.Open);
+            List<Student> st = new List<Student>();
+            using (var reader = new StreamReader(fs))
+            {
+                while (reader.Peek() >= 0)
+                {
+                    string str = reader.ReadLine() ?? string.Empty;
+                    Student student = new Student(str);
+                    st.Add(student);
+                }
+            }
         }
 
-        static void runMenu(Student[] studs)
-        // You may (if want) change ``Student[]'' to ``List<Student>''
+        static void runMenu(List<Student> studs)
         {
-            // TODO   implement this method
-            // It should call method(s) for specific variant(s).
-            // Array (or List) studs should already contain data (probably filled with ReadData method)
+            List<Student> result = new List<Student>();
+            foreach (Student student in studs)
+            {
+                if ()
+                result.Add(student);
+            }
         }
         static void Main(string[] args)
         {
-            Student[] studs = ReadData("input.txt");
+            Console.OutputEncoding = Encoding.UTF8;
+            List<Student> studs = ReadData("input.txt");
             runMenu(studs);
         }
     }
